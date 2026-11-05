@@ -64,4 +64,4 @@ Setup instructions will arrive with the first code.
 
 ## Team
 
-Leonardo Passeri (design), Alessio D'Aiuto (data and planning), Antonio Vetrone (pilot and models).
+Leonardo Passeri, Alessio D'Aiuto, Antonio Vetrone
