@@ -1,0 +1,17 @@
+# Images are not committed (licences and size)
+data/raw/
+data/generated/
+results/images/
+
+# Model weights
+*.pt
+*.pth
+*.safetensors
+checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.env
