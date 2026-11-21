@@ -2,6 +2,8 @@
 
 Each test is linked to a functional requirement, so a passing test is evidence that the requirement is met.
 
+**Owner:** Role C, validation and evaluation (Alessio D'Aiuto or Antonio Vetrone, to be confirmed)
+
 | ID | Requirement | Acceptance |
 | --- | --- | --- |
 | R1 | **Generate hazard scenarios.** The system generates synthetic images of hazards such as open doors, hoods and trunks | Generated images are reviewed to verify that the requested hazards are clearly represented |

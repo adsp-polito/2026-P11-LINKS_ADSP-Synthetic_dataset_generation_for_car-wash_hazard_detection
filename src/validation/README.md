@@ -8,5 +8,5 @@ It checks three things: the requested hazard is present, the rest of the car is 
 | --- | --- |
 | **Input** | The original and edited image, and the target class |
 | **Output** | Accept or reject, with a score for each check. Rejected images are logged per class |
-| **Owner** | To be assigned |
+| **Owner** | Role C, validation and evaluation (Alessio D'Aiuto or Antonio Vetrone, to be confirmed) |
 | **Check** | Tests linked to R1. KPI: at least 80% agreement with human review on a sample |

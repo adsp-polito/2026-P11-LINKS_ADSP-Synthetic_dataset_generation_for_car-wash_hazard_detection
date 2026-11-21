@@ -113,4 +113,10 @@ Setup instructions will arrive with the first code.
 
 ## Team
 
-Leonardo Passeri, Alessio D'Aiuto, Antonio Vetrone
+| Role | Member | Owns |
+| --- | --- | --- |
+| Design, management and human review | Leonardo Passeri | Planning, KPI definitions, annotation policy, [interfaces](src/interfaces), slides and report |
+| Role B: data and models | Alessio D'Aiuto or Antonio Vetrone (to be confirmed) | `data/`, [generation](src/generation), [labelling](src/labelling) |
+| Role C: validation and evaluation | Alessio D'Aiuto or Antonio Vetrone (to be confirmed) | [validation](src/validation), [export](src/export), [tests](tests) |
+
+The person who builds a component does not evaluate it. Role B generates and segments, Role C measures whether the results meet the targets, and the human review checks both. All three members review images and draw the reference masks.

@@ -2,6 +2,8 @@
 
 Inputs for the pipeline.
 
+**Owner:** Role B, data and models (Alessio D'Aiuto or Antonio Vetrone, to be confirmed)
+
 **No images are stored in this repository.** CompCars is licensed for non-commercial research only and does not allow redistribution, and the full dataset is about 20 GB.
 
 | Folder | Content | In git? |
