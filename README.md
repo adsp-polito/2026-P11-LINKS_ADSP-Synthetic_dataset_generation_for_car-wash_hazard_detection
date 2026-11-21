@@ -4,7 +4,7 @@ Open doors, roof boxes and bike racks can jam or damage an automatic car wash. A
 
 We are building an automatic pipeline that adds hazards to car photos, rejects unrealistic results and labels the rest. The output is a dataset that a hazard detector can later be trained on.
 
-> **Status: design phase.** Checkpoint #1 was presented on 11 November 2026 ([slides](docs/presentations/checkpoint_1.pdf)). There is no pipeline code yet.
+> **Status: development phase.** Checkpoint #1 was presented on 11 November 2026 ([slides](docs/presentations/checkpoint_1.pdf)). We are now building a first end-to-end pilot on six hazard classes for Checkpoint #2 on 2 December 2026. There is no pipeline code yet.
 
 *Applied Data Science Project, Politecnico di Torino, with LINKS Foundation.*
 
@@ -30,7 +30,7 @@ The pipeline runs without manual steps. People only review a sample, to measure 
 
 | Question | Target |
 | --- | --- |
-| Can the model draw this hazard? | At least 50% of a class's images pass validation. Classes below this are dropped. |
+| Can the model draw this hazard? | At least 50% of a class's images pass validation. Classes below this are dropped. Measured on each of the six pilot classes. |
 | Can we trust the automatic checks? | At least 80% agreement with human review on a sample. |
 | Are the labels usable? | At least 90% of masks reach IoU 0.5 against a hand-labelled sample. |
 
@@ -63,14 +63,28 @@ Each module's README names its owner. The requirements are listed in [tests](tes
 
 ## Hazard classes
 
-The project covers 23 classes. These 16 are named in the project brief, and we are confirming the rest.
+The project brief defines 23 hazard classes. We implement six of them end to end. Together they cover openings, roof loads and rear hazards, from large and easy to small and hard.
 
-| Group | Classes |
+| Pilot class | Group | Viewpoints where it is visible | Why it is in the pilot |
+| --- | --- | --- | --- |
+| Open front door | Openings | Side, front three-quarter, rear three-quarter | The most common hazard at the entrance |
+| Open trunk or tailgate | Openings | Rear, rear three-quarter | Large and easy to see |
+| Open hood | Openings | Front, front three-quarter | Also visible in the CompCars surveillance photos, which are front views |
+| Roof box | Roof | Side, front three-quarter, rear three-quarter | An object added to the car, not a part that opens |
+| Roof bike rack | Roof | Side, front three-quarter, rear three-quarter | A thin, complex shape that tests the masks |
+| Exposed towball | Rear | Rear, rear three-quarter | A small object: the hardest case |
+
+Source photos are selected only from the viewpoints listed for each class, so the requested hazard can be seen.
+
+The other 17 classes are an extension, to be added once the pipeline works on the pilot:
+
+| Group | Classes not in the pilot |
 | --- | --- |
-| Openings | Doors, trunk, hood, fuel flap, windows, sunroof |
-| Roof | Roof box, rails, crossbars, bike rack |
+| Openings | Fuel flap, windows, sunroof |
+| Roof | Rails, crossbars |
 | Loads | Ladder, kayak, surfboard |
-| Rear | Towbar rack, exposed towball, trailer |
+| Rear | Towbar rack, trailer |
+| To be confirmed with LINKS | 7 classes not named in the project brief |
 
 ## Data and models
 
@@ -84,7 +98,8 @@ Images are not stored in this repository. We are checking what the licences allo
 
 ## Scope
 
-- **In scope:** the full pipeline on CompCars, and the labelled dataset.
+- **In scope:** the full pipeline on CompCars for the six pilot classes, and their labelled dataset.
+- **Extension:** the other 17 hazard classes, once the pilot meets its targets.
 - **Out of scope:** training the final hazard detector. It is a possible extension if time allows.
 
 ## Documents
@@ -98,4 +113,10 @@ Setup instructions will arrive with the first code.
 
 ## Team
 
-Leonardo Passeri, Alessio D'Aiuto, Antonio Vetrone
+| Role | Member | Owns |
+| --- | --- | --- |
+| Design, management and human review | Leonardo Passeri | Planning, KPI definitions, annotation policy, [interfaces](src/interfaces), slides and report |
+| Role B: data and models | Alessio D'Aiuto or Antonio Vetrone (to be confirmed) | `data/`, [generation](src/generation), [labelling](src/labelling) |
+| Role C: validation and evaluation | Alessio D'Aiuto or Antonio Vetrone (to be confirmed) | [validation](src/validation), [export](src/export), [tests](tests) |
+
+The person who builds a component does not evaluate it. Role B generates and segments, Role C measures whether the results meet the targets, and the human review checks both. All three members review images and draw the reference masks.

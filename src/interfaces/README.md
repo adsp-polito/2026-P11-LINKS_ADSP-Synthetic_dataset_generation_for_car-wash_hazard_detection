@@ -8,5 +8,5 @@ A reviewer sees each image before and after the edit, marks it as pass or fail, 
 | --- | --- |
 | **Input** | A sample of accepted and rejected images |
 | **Output** | Reviewer decisions, compared with the automatic checks |
-| **Owner** | To be assigned |
+| **Owner** | Leonardo Passeri |
 | **Check** | Supports the KPI: at least 80% agreement between automatic checks and human review |
